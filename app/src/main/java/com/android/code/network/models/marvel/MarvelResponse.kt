@@ -1,4 +1,4 @@
-package com.android.code.models.marvel
+package com.android.code.network.models.marvel
 
 import com.google.gson.annotations.SerializedName
 

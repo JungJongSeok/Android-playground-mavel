@@ -1,10 +1,10 @@
 package com.android.code.ui.search
 
 import androidx.lifecycle.LiveData
-import com.android.code.repository.MarvelRxRepository
+import com.android.code.data.repository.MarvelRxRepository
 import com.android.code.ui.BaseViewModel
 import com.android.code.util.empty
-import com.android.code.util.livedata.SafetyMutableLiveData
+import com.android.code.util.SafetyMutableLiveData
 import com.android.code.util.zipToPair
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

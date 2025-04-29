@@ -1,8 +1,8 @@
-package com.android.code.models
+package com.android.code.network.models
 
 import com.google.gson.annotations.SerializedName
 
-data class BaseRequest<out T>(
+data class BaseResponse<out T>(
     @SerializedName("data")
     val data: T
 )

@@ -1,4 +1,4 @@
-package com.android.code.binding
+package com.android.code.ui.binding
 
 import android.view.View
 import android.widget.ImageView

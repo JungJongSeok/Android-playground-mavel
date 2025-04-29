@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.android.code.ui.BaseViewModel
 import com.android.code.ui.search.SearchBaseData
 import com.android.code.ui.search.SearchData
-import com.android.code.util.livedata.SafetyMutableLiveData
+import com.android.code.util.SafetyMutableLiveData
 
 class MainViewModel : BaseViewModel(),
     MainViewModelInput, MainViewModelOutput {

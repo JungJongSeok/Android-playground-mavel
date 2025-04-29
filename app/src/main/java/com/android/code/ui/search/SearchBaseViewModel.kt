@@ -1,10 +1,10 @@
 package com.android.code.ui.search
 
 import androidx.lifecycle.LiveData
-import com.android.code.repository.MarvelRepository
+import com.android.code.data.repository.MarvelRepository
 import com.android.code.ui.BaseViewModel
 import com.android.code.util.empty
-import com.android.code.util.livedata.SafetyMutableLiveData
+import com.android.code.util.SafetyMutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async

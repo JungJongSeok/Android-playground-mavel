@@ -1,9 +1,9 @@
-package com.android.code.repository
+package com.android.code.data.repository
 
 import com.android.code.BuildConfig
-import com.android.code.lib.network.MarvelService
-import com.android.code.models.BaseResponse
-import com.android.code.models.marvel.SampleResponse
+import com.android.code.network.MarvelService
+import com.android.code.network.models.BaseResponse
+import com.android.code.network.models.marvel.SampleResponse
 import com.android.code.ui.search.SearchType
 import com.android.code.util.SharedPreferencesManager
 import dagger.assisted.Assisted

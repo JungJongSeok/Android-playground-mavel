@@ -3,10 +3,10 @@ package com.android.code.ui.search
 import com.android.code.CoroutinesTestExtension
 import com.android.code.InstantExecutorExtension
 import com.android.code.getOrAwaitValue
-import com.android.code.models.BaseResponse
-import com.android.code.models.marvel.MarvelResult
-import com.android.code.models.marvel.SampleResponse
-import com.android.code.repository.MarvelRepository
+import com.android.code.network.models.BaseResponse
+import com.android.code.network.models.marvel.MarvelResult
+import com.android.code.network.models.marvel.SampleResponse
+import com.android.code.data.repository.MarvelRepository
 import kotlinx.coroutines.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach

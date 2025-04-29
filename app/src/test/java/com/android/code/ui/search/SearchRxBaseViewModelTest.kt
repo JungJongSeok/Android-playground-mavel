@@ -3,10 +3,10 @@ package com.android.code.ui.search
 import com.android.code.CoroutinesTestExtension
 import com.android.code.InstantExecutorExtension
 import com.android.code.getOrAwaitValue
-import com.android.code.models.BaseResponse
-import com.android.code.models.marvel.MarvelResult
-import com.android.code.models.marvel.SampleResponse
-import com.android.code.repository.MarvelRxRepository
+import com.android.code.network.models.BaseResponse
+import com.android.code.network.models.marvel.MarvelResult
+import com.android.code.network.models.marvel.SampleResponse
+import com.android.code.data.repository.MarvelRxRepository
 import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
