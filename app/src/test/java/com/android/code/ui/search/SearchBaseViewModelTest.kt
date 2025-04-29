@@ -13,8 +13,11 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 import kotlin.system.measureTimeMillis
 
 @kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,16 +27,26 @@ internal class SearchBaseViewModelTest {
     private lateinit var searchBaseViewModel: SearchBaseViewModel
 
     private val recentList = mutableListOf("123", "456", "789")
+
+    @Mock
+    lateinit var marvelResult: MarvelResult
+
+    @Mock
+    lateinit var sampleResponse: SampleResponse
+
+    @Mock
+    lateinit var searchData: SearchBaseData
+
     @BeforeEach
     fun setUp() {
-        val marvelResult: MarvelResult = mock {
-            on { id } doReturn 1
-        }
-        val sampleResponse: SampleResponse = mock {
-            on { count } doReturn 20
-            on { total } doReturn 1000
-            on { results } doReturn listOf(marvelResult, marvelResult, marvelResult)
-        }
+        MockitoAnnotations.openMocks(this)
+
+        whenever(marvelResult.id).thenReturn(1)
+
+        whenever(sampleResponse.count).thenReturn(20)
+        whenever(sampleResponse.total).thenReturn(1000)
+        whenever(sampleResponse.results).thenReturn(listOf(marvelResult, marvelResult, marvelResult))
+
         val marvelRepository: MarvelRepository = object : MarvelRepository {
             override suspend fun characters(
                 nameStartsWith: String?,
@@ -143,7 +156,6 @@ internal class SearchBaseViewModelTest {
     @DisplayName("click 한 데이터를 검증한다.")
     fun clickData() {
         runBlocking {
-            val searchData = mock<SearchData>()
             val totalExecutionTime = measureTimeMillis {
                 searchBaseViewModel.clickData(searchData)
                 assertEquals(searchBaseViewModel.clickData.getOrAwaitValue(), searchData)

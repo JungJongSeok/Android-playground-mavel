@@ -2,17 +2,14 @@ package com.android.code.ui.search
 
 import com.android.code.CoroutinesTestExtension
 import com.android.code.InstantExecutorExtension
+import com.android.code.data.repository.MarvelRxRepository
 import com.android.code.getOrAwaitValue
 import com.android.code.network.models.BaseResponse
 import com.android.code.network.models.marvel.MarvelResult
 import com.android.code.network.models.marvel.SampleResponse
-import com.android.code.data.repository.MarvelRxRepository
 import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.disposables.Disposable
-import io.reactivex.rxjava3.internal.schedulers.ExecutorScheduler
-import io.reactivex.rxjava3.internal.schedulers.TrampolineScheduler
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.delay
@@ -24,9 +21,11 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import java.util.concurrent.TimeUnit
+import org.mockito.kotlin.whenever
 import kotlin.system.measureTimeMillis
 
 @kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -36,24 +35,33 @@ internal class SearchRxBaseViewModelTest {
     private lateinit var searchBaseViewModel: SearchRxBaseViewModel
 
     private val recentList = mutableListOf("123", "456", "789")
+
+    @Mock
+    lateinit var marvelResult: MarvelResult
+
+    @Mock
+    lateinit var sampleResponse: SampleResponse
+
+    @Mock
+    lateinit var searchData: SearchBaseData
+
     @BeforeEach
     fun setUp() {
         val immediate: Scheduler = Schedulers.io()
 
+        MockitoAnnotations.openMocks(this)
         RxJavaPlugins.setInitIoSchedulerHandler { immediate }
         RxJavaPlugins.setInitComputationSchedulerHandler { immediate }
         RxJavaPlugins.setInitNewThreadSchedulerHandler { immediate }
         RxJavaPlugins.setInitSingleSchedulerHandler { immediate }
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { immediate }
 
-        val marvelResult: MarvelResult = mock {
-            on { id } doReturn 1
-        }
-        val sampleResponse: SampleResponse = mock {
-            on { count } doReturn 20
-            on { total } doReturn 1000
-            on { results } doReturn listOf(marvelResult, marvelResult, marvelResult)
-        }
+        whenever(marvelResult.id).thenReturn(1)
+
+        whenever(sampleResponse.count).thenReturn(20)
+        whenever(sampleResponse.total).thenReturn(1000)
+        whenever(sampleResponse.results).thenReturn(listOf(marvelResult, marvelResult, marvelResult))
+
         val marvelRepository: MarvelRxRepository = object : MarvelRxRepository {
             override fun charactersRx(
                 nameStartsWith: String?,
@@ -167,7 +175,6 @@ internal class SearchRxBaseViewModelTest {
     @DisplayName("click 한 데이터를 검증한다.")
     fun clickData() {
         runBlocking {
-            val searchData = mock<SearchData>()
             val totalExecutionTime = measureTimeMillis {
                 searchBaseViewModel.clickData(searchData)
                 assertEquals(searchBaseViewModel.clickData.getOrAwaitValue(), searchData)
