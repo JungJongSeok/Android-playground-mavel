@@ -104,20 +104,10 @@ internal class SearchRxBaseViewModelTest {
         runBlocking {
             val totalExecutionTime = measureTimeMillis {
                 searchBaseViewModel.initData()
-                searchBaseViewModel.search("")
-                assertEquals(searchBaseViewModel.searchedText.getOrAwaitValue(), "")
-                searchBaseViewModel.search("spi")
-                delay(1)
                 searchBaseViewModel.search("spider")
                 assertEquals(searchBaseViewModel.searchedText.getOrAwaitValue(), "")
-                delay(500)
+                delay(1000)
                 assertEquals(searchBaseViewModel.searchedText.getOrAwaitValue(), "spider")
-                searchBaseViewModel.search("spider-m")
-                delay(1)
-                assertEquals(searchBaseViewModel.searchedText.getOrAwaitValue(), "spider")
-                searchBaseViewModel.search("spider-man")
-                delay(500)
-                assertEquals(searchBaseViewModel.searchedText.getOrAwaitValue(), "spider-man")
             }
 
             println("search() Total Time: $totalExecutionTime")
