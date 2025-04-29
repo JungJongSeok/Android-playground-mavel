@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">안드로이드 개발 2022년</string>
+    <string name="app_name">안드로이드 개발 Mavel</string>
 
     <string name="common_network_error">통신 중 에러가 발생하였습니다. 다시 시도해 주세요.</string>
 

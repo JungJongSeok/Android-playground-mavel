@@ -2,15 +2,15 @@
 apply from: 'authentication.gradle'
 
 buildscript {
-    ext.kotlin_version = "1.6.0"
-    ext.hilt_version = "2.40.5"
+    ext.kotlin_version = "1.9.21"
+    ext.hilt_version = "2.51.1"
 
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:8.7.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
     }
