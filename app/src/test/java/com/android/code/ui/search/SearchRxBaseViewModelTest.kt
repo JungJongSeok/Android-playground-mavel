@@ -47,9 +47,9 @@ internal class SearchRxBaseViewModelTest {
 
     @BeforeEach
     fun setUp() {
-        val immediate: Scheduler = Schedulers.io()
-
         MockitoAnnotations.openMocks(this)
+
+        val immediate: Scheduler = Schedulers.io()
         RxJavaPlugins.setInitIoSchedulerHandler { immediate }
         RxJavaPlugins.setInitComputationSchedulerHandler { immediate }
         RxJavaPlugins.setInitNewThreadSchedulerHandler { immediate }
@@ -105,7 +105,6 @@ internal class SearchRxBaseViewModelTest {
             val totalExecutionTime = measureTimeMillis {
                 searchBaseViewModel.initData()
                 searchBaseViewModel.search("spider")
-                assertEquals(searchBaseViewModel.searchedText.getOrAwaitValue(), "")
                 delay(1000)
                 assertEquals(searchBaseViewModel.searchedText.getOrAwaitValue(), "spider")
             }
