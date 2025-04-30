@@ -1,6 +1,6 @@
 package com.android.code.ui.search
 
-import com.android.code.models.marvel.MarvelResult
+import com.android.code.network.models.marvel.MarvelResult
 
 sealed class SearchData
 

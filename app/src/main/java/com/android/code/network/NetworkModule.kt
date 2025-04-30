@@ -1,4 +1,4 @@
-package com.android.code.lib.network
+package com.android.code.network
 
 import com.android.code.BuildConfig
 import com.android.code.util.addFlipperInterceptor

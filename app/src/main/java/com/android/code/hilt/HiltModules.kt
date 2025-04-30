@@ -1,10 +1,10 @@
-package com.android.code.lib.hilt
+package com.android.code.hilt
 
 import android.app.Application
-import com.android.code.lib.network.MarvelService
-import com.android.code.lib.network.provideAPIClientService
-import com.android.code.repository.MarvelRepositoryImpl
-import com.android.code.repository.MarvelRxRepositoryImpl
+import com.android.code.network.MarvelService
+import com.android.code.network.provideAPIClientService
+import com.android.code.data.repository.MarvelRepositoryImpl
+import com.android.code.data.repository.MarvelRxRepositoryImpl
 import com.android.code.ui.main.MainViewModel
 import com.android.code.ui.search.SearchBaseViewModel
 import com.android.code.ui.search.SearchRxBaseViewModel
@@ -56,7 +56,8 @@ class RepositoryModule {
 object NetworkModule {
     @Singleton
     @Provides
-    fun provideAPIClientService() = provideAPIClientService<MarvelService>()
+    fun provideAPIClientService() =
+        com.android.code.network.provideAPIClientService<MarvelService>()
 }
 
 @Module

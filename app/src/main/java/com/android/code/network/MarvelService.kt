@@ -1,7 +1,7 @@
-package com.android.code.lib.network
+package com.android.code.network
 
-import com.android.code.models.BaseResponse
-import com.android.code.models.marvel.SampleResponse
+import com.android.code.network.models.BaseResponse
+import com.android.code.network.models.marvel.SampleResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

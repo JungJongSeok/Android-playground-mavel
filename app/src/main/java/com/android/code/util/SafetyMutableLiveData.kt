@@ -1,4 +1,4 @@
-package com.android.code.util.livedata
+package com.android.code.util
 
 import android.os.Looper
 import androidx.core.util.Consumer

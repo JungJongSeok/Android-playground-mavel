@@ -1,4 +1,4 @@
-package com.android.code.models.marvel
+package com.android.code.network.models.marvel
 
 import com.google.gson.annotations.SerializedName
 
@@ -18,18 +18,18 @@ data class SampleResponse(
 
 data class MarvelResult(
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("thumbnail")
     val thumbnail: Thumbnail?,
 )
 
 data class Thumbnail(
     @SerializedName("extension")
-    val extension: String,
+    val extension: String?,
     @SerializedName("path")
-    val path: String
+    val path: String?
 )
